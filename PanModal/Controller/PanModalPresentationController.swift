@@ -768,7 +768,7 @@ private extension PanModalPresentationController {
      This helps halt scrolling when we want to hold the scroll view in place.
      */
     func trackScrolling(_ scrollView: UIScrollView) {
-        scrollViewYOffset = max(scrollView.contentOffset.y, 0)
+        scrollViewYOffset = max(scrollView.contentOffset.y, -scrollView.contentInset.top)
         scrollView.showsVerticalScrollIndicator = true
     }
 
@@ -804,7 +804,7 @@ private extension PanModalPresentationController {
              */
             presentedView.frame.origin.y = longFormYPosition - yOffset
         } else {
-            scrollViewYOffset = 0
+            scrollViewYOffset = -scrollView.contentInset.top
             snap(toYPosition: longFormYPosition)
         }
 
